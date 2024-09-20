@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .button {
+        margin: 5px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .button-row {
+        display: flex;
+        justify-content: space-around;
+        width: 360px;
+      }
+
+      #calculator {
+        padding: 5px;
+        margin-top: 15px;
+      }
+
+      #result {
+        padding: 5px;
+      }
+
+      .input-result {
+        width: 360px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="button-row">
+        <button onclick="addSeven()" class="button">7</button>
+        <button onclick="addEight()" class="button">8</button>
+        <button onclick="addNine()" class="button">9</button>
+        <button onclick="addPlus()" class="button">+</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="addFour()" class="button">4</button>
+        <button onclick="addFive()" class="button">5</button>
+        <button onclick="addSix()" class="button">6</button>
+        <button onclick="addSubtract()" class="button">-</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="addOne()" class="button">1</button>
+        <button onclick="addTwo()" class="button">2</button>
+        <button onclick="addThree()" class="button">3</button>
+        <button onclick="addMultiply()" class="button">*</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="addDivide()" class="button">/</button>
+        <button onclick="addZero()" class="button">0</button>
+        <button onclick="Equal()" class="button">=</button>
+        <button onclick="Clear()" class="button">AC</button>
+      </div>
+
+      <div class="input-result">
+        <input type="text" name="calculator" id="calculator" />
+        <input type="text" name="result" id="result" />
+      </div>
+    </div>
+  </body>
+  <script>
+    let calculator = "";
+
+    function addZero() {
+      calculator += "0";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addOne() {
+      calculator += "1";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addTwo() {
+      calculator += "2";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addThree() {
+      calculator += "3";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addFour() {
+      calculator += "4";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addFive() {
+      calculator += "5";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addSix() {
+      calculator += "6";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addSeven() {
+      calculator += "7";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addEight() {
+      calculator += "8";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addNine() {
+      calculator += "9";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addPlus() {
+      calculator += "+";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addSubtract() {
+      calculator += "-";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function addMultiply() {
+      calculator += "*";
+      document.getElementById("calculator").value = calculator;
+    }
+    function addDivide() {
+      calculator += "/";
+      document.getElementById("calculator").value = calculator;
+    }
+
+    function Equal() {
+      calculator = eval(calculator);
+      document.getElementById("result").value = calculator;
+    }
+
+    function Clear() {
+      calculator = "";
+      document.getElementById("result").value = "";
+      document.getElementById("calculator").value = "";
+    }
+  </script>
+</html>

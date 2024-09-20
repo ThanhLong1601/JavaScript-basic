@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        #cartMessage{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p>Cart Quantity</p>
+
+    <div>
+        <button onclick="setQuantity()">Show quantity</button>
+    </div>
+    <button onclick="addCart()">Add to cart</button> 
+    <button onclick="addTwo()">+2</button> 
+    <button onclick="addThree()">+3</button> 
+    
+    <div>
+        <button onclick="removeCart()">Remove from cart</button>
+        <button onclick="RemoveTwo()">-2</button>
+        <button onclick="RemoveThree()">-3</button>
+    </div>
+
+    <div>
+        <button onclick="resetQuantity()">Reset Cart</button>
+    </div>
+
+    <div>
+        <p>Cart Quantity <input type="text" name="result" id="result"> <span id="cartMessage"></span></p> 
+    </div>
+
+</body>
+
+<script>
+    let cartQuantity = 0;
+
+    function setQuantity(){
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = ""
+
+    }
+
+    function addCart(){
+        cartQuantity++;
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = ""
+
+    }
+
+    function addTwo(){
+        cartQuantity+=2;
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = ""
+
+    }
+
+    function addThree() {
+        cartQuantity+=3;
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = ""
+
+    }
+
+    function resetQuantity() {
+        cartQuantity = 0;
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = "Cart is reset!!!!"
+    }
+
+    function removeCart(){
+        cartQuantity--
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = ""
+
+    }
+
+    function RemoveTwo() {
+        cartQuantity -= 2;
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = ""
+
+    }
+
+    function RemoveThree() {
+        cartQuantity -= 3;
+        document.getElementById('result').value = cartQuantity
+        document.getElementById('cartMessage').innerText = ""
+
+    }
+</script>
+</html>

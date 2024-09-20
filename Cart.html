@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .button-add-cart {
+            background-color: yellow;
+        }
+
+        .button-buy {
+            background-color: orange;
+        }
+
+        .button-remove {
+            background-color: red;
+        }
+
+        .button-remove:hover,
+        .button-buy:hover,
+        .button-add-cart:hover {
+            opacity: 0.5;
+        }
+
+        #quantity-cart,
+        #quantity {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Adults Plain Cotton T-shirt</p>
+    <p>
+        Price: $7.99
+        <input type="number" name="quantity" id="quantity" max="10" min="0" value="0" />
+    </p>
+    <p>
+        Quantity in your Cart
+        <input type="text" name="quantity-cart" id="quantity-cart" value="0" readonly />
+    </p>
+
+    <button onclick="popup_add()" class="button-add-cart" title="Buttons">
+        Add to Cart
+    </button>
+
+    <button onclick="popup_buy()" class="button-buy" title="Buttons">
+        Buy now
+    </button>
+
+    <button onclick="popup_remove()" class="button-remove" title="Buttons">
+        Remove from cart
+    </button>
+
+    <script>
+        let quantityCart = 0;
+        let maxQuantity = 10;
+        function popup_add() {
+            let inputQuantity = parseInt(document.getElementById("quantity").value);
+
+            if (!inputQuantity || inputQuantity <= 0) {
+                inputQuantity = 1;
+            }
+
+            if (inputQuantity + quantityCart > maxQuantity) {
+                alert("The cart is full");
+            } else {
+                quantityCart += inputQuantity;
+                document.getElementById("quantity-cart").value = quantityCart;
+                alert("Added " + inputQuantity + " item(s) to the cart");
+            }
+        }
+
+        function popup_buy() {
+            document.getElementById("quantity-cart").value = 0;
+            document.getElementById("quantity").value = 0;
+            alert("Purchased\n" + `${quantityCart} item(s) have been Order`);
+            quantityCart = 0;
+        }
+
+        function popup_remove() {
+            if (quantityCart <= 0) {
+                alert("Don't have any products to remove");
+            } else {
+                quantityCart--;
+                document.getElementById("quantity-cart").value = quantityCart;
+                alert("Products has been remove");
+            }
+        }
+    </script>
+</body>
+
+</html>
