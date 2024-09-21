@@ -18,6 +18,11 @@
             background-color: red;
         }
 
+        .button-clear {
+            background-color: rgb(69, 245, 69);
+        }
+
+        .button-clear:hover,
         .button-remove:hover,
         .button-buy:hover,
         .button-add-cart:hover {
@@ -35,7 +40,7 @@
     <p>Adults Plain Cotton T-shirt</p>
     <p>
         Price: $7.99
-        <input type="number" name="quantity" id="quantity" max="10" min="0" value="0" />
+        <input type="number" name="quantity" id="quantity" max="10" min="0" value="1" />
     </p>
     <p>
         Quantity in your Cart
@@ -54,6 +59,10 @@
         Remove from cart
     </button>
 
+    <button onclick="popup_clear()" class="button-clear" title="Buttons">
+        Clear cart
+    </button>
+
     <script>
         let quantityCart = 0;
         let maxQuantity = 10;
@@ -66,28 +75,57 @@
 
             if (inputQuantity + quantityCart > maxQuantity) {
                 alert("The cart is full");
-            } else {
-                quantityCart += inputQuantity;
-                document.getElementById("quantity-cart").value = quantityCart;
-                alert("Added " + inputQuantity + " item(s) to the cart");
+                return;
             }
+            quantityCart += inputQuantity;
+            document.getElementById("quantity-cart").value = quantityCart;
+            alert("Added " + inputQuantity + " item(s) to the cart");
+            document.getElementById("quantity").value = 1;
+
         }
 
         function popup_buy() {
             document.getElementById("quantity-cart").value = 0;
-            document.getElementById("quantity").value = 0;
+            document.getElementById("quantity").value = 1;
             alert("Purchased\n" + `${quantityCart} item(s) have been Order`);
             quantityCart = 0;
         }
 
         function popup_remove() {
+            let inputQuantity = parseInt(document.getElementById("quantity").value);
+
+            if (isNaN(inputQuantity) || inputQuantity <= 0 || inputQuantity >= 10) {
+                alert("Please enter a valid quantity greater than 0 and less than 10!!!")
+                return;
+            }
+
             if (quantityCart <= 0) {
                 alert("Don't have any products to remove");
-            } else {
-                quantityCart--;
-                document.getElementById("quantity-cart").value = quantityCart;
-                alert("Products has been remove");
+                document.getElementById("quantity").value = 1;
+                return;
             }
+
+            if (inputQuantity > quantityCart) {
+                alert("You can't remove more item than you have in your cart!!!")
+                document.getElementById("quantity").value = 1;
+                return;
+            }
+
+            quantityCart -= inputQuantity;
+            document.getElementById("quantity-cart").value = quantityCart;
+            alert(`${inputQuantity}item(s) has been remove`);
+            document.getElementById("quantity").value = 1;
+        }
+
+
+        function popup_clear() {
+            if (quantityCart <= 0) {
+                alert("Your cart is empty!!")
+                return;
+            }
+            document.getElementById("quantity").value = 1;
+            document.getElementById("quantity-cart").value = 0;
+            alert("Your cart have been clear!!!")
         }
     </script>
 </body>
