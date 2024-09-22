@@ -1,43 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .button {
-        margin: 5px;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        text-align: center;
-      }
 
-      .button-row {
-        display: flex;
-        justify-content: space-around;
-        width: 360px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .button {
+      margin: 5px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      text-align: center;
+    }
 
-      #calculator {
-        padding: 5px;
-        margin-top: 15px;
-      }
+    .button-row {
+      display: flex;
+      justify-content: space-around;
+      width: 360px;
+    }
 
-      #result {
-        padding: 5px;
-      }
+    #calculator {
+      padding: 5px;
+      margin-top: 15px;
+    }
 
-      .input-result {
-        width: 360px;
-        font-size: 18px;
-      }
-    </style>
-  </head>
-  <body>
+    #result {
+      padding: 5px;
+    }
+
+    .input-result {
+      width: 360px;
+      font-size: 18px;
+    }
+
+    .history-section {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: 20px;
+    }
+
+    #history {
+      width: 100px;
+      height: 270px;
+      resize: none;
+      font-size: 16px;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .clear-history-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 1px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .clear-history-btn:hover {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
     <div>
       <div class="button-row">
         <button onclick="addSeven()" class="button">7</button>
@@ -72,88 +108,116 @@
         <input type="text" name="result" id="result" />
       </div>
     </div>
-  </body>
-  <script>
-    let calculator = "";
 
-    function addZero() {
-      calculator += "0";
-      document.getElementById("calculator").value = calculator;
-    }
+    <div class="history-section">
+      <textarea id="history" readonly></textarea>
+      <button class="clear-history-btn" onclick="clearHistory()">🗑️</button>
+    </div>
+  </div>
+</body>
+<script>
 
-    function addOne() {
-      calculator += "1";
-      document.getElementById("calculator").value = calculator;
-    }
+  let calculator = "";
+  let history = localStorage.getItem('history') || "";
 
-    function addTwo() {
-      calculator += "2";
-      document.getElementById("calculator").value = calculator;
-    }
+  document.getElementById('history').value = history;
 
-    function addThree() {
-      calculator += "3";
-      document.getElementById("calculator").value = calculator;
-    }
 
-    function addFour() {
-      calculator += "4";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addZero() {
+    calculator += "0";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addFive() {
-      calculator += "5";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addOne() {
+    calculator += "1";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addSix() {
-      calculator += "6";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addTwo() {
+    calculator += "2";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addSeven() {
-      calculator += "7";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addThree() {
+    calculator += "3";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addEight() {
-      calculator += "8";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addFour() {
+    calculator += "4";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addNine() {
-      calculator += "9";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addFive() {
+    calculator += "5";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addPlus() {
-      calculator += "+";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addSix() {
+    calculator += "6";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addSubtract() {
-      calculator += "-";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addSeven() {
+    calculator += "7";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function addMultiply() {
-      calculator += "*";
-      document.getElementById("calculator").value = calculator;
-    }
-    function addDivide() {
-      calculator += "/";
-      document.getElementById("calculator").value = calculator;
-    }
+  function addEight() {
+    calculator += "8";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function Equal() {
-      calculator = eval(calculator);
-      document.getElementById("result").value = calculator;
-    }
+  function addNine() {
+    calculator += "9";
+    document.getElementById("calculator").value = calculator;
+  }
 
-    function Clear() {
+  function addPlus() {
+    calculator += "+";
+    document.getElementById("calculator").value = calculator;
+  }
+
+  function addSubtract() {
+    calculator += "-";
+    document.getElementById("calculator").value = calculator;
+  }
+
+  function addMultiply() {
+    calculator += "*";
+    document.getElementById("calculator").value = calculator;
+  }
+  function addDivide() {
+    calculator += "/";
+    document.getElementById("calculator").value = calculator;
+  }
+
+  function Equal() {
+    try {
+      let result = eval(calculator);
+      document.getElementById("result").value = result;
+
+      history += calculator + "=" + result + "\n";
+      document.getElementById("history").value = history;
+      localStorage.setItem('history', history);
+
       calculator = "";
-      document.getElementById("result").value = "";
-      document.getElementById("calculator").value = "";
+    } catch (e) {
+      document.getElementById("result").value = "Error";
     }
-  </script>
+  }
+
+  function clearHistory() {
+    history = "";
+    document.getElementById('history').value = "";
+    localStorage.removeItem('history');
+  }
+
+  function Clear() {
+    calculator = "";
+    document.getElementById("result").value = "";
+    document.getElementById("calculator").value = "";
+  }
+</script>
+
 </html>

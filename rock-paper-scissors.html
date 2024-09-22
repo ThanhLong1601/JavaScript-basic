@@ -59,6 +59,10 @@
   <button onclick="playGame('Scissors')" class="btn-play">Scissors</button>
   <button onclick="resetScore()" id="reset-button">Reset Score</button>
 
+  <p class="js-result"></p>
+  <p class="js-moves"></p>
+
+
   <h2>Your Score</h2>
   <div class="input">
     <p>
@@ -91,6 +95,7 @@
       ties: 0
     }
   }*/
+  updateScore();
 
 
   function computerMoveRandom() {
@@ -148,21 +153,26 @@
     }
 
     localStorage.setItem('score', JSON.stringify(score));
+    updateScore();
 
-    alert(`You pick ${playerMove}. Computer picked ${computerMove}. ${result}`);
+    document.querySelector('.js-result').innerHTML = result;
+    document.querySelector('.js-moves').innerHTML = `You ${playerMove} - ${computerMove} Computer`;
+  }
+
+  function updateScore() {
+    document.getElementById('input_wins').value = score.wins;
+    document.getElementById('input_losses').value = score.losses;
+    document.getElementById('input_ties').value = score.ties;
   }
 
 
   function resetScore() {
-    score.wins = 0
-    document.getElementById('input_wins').value = score.wins;
-    score.losses = 0
-    document.getElementById('input_losses').value = score.losses;
-    score.ties = 0
-    document.getElementById('input_ties').value = score.ties;
-
-    localStorage.removeItem('score')
-    alert("Score is reset!!!!!")
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    updateScore();
+    localStorage.removeItem('score');
+    alert("Score is reset!!!!!");
   }
 </script>
 

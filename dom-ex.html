@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>9a</button>
+  <button class="btn-9b">9b</button>
+
+  <button onclick="buttonChoice('heads')" class="js-btn-heads">Heads</button>
+  <button onclick="buttonChoice('tails')" class="js-btn-tails">Tails</button>
+
+  <p class="js-text"></p>
+
+
+  <input onkeydown="handleKeyDown(event)" class="js-input-name" placeholder="Name">
+  <button onclick="submitBtn()">Submit</button>
+  <p class="js-text-name"></p>
+</body>
+
+
+<script>
+  console.log(document.querySelector('button'));
+  document.querySelector('.btn-9b').innerHTML = '9b done!'
+
+
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      submitBtn();
+    }
+  }
+
+
+  function submitBtn() {
+    const inputElement = document.querySelector('.js-input-name')
+    const name = inputElement.value;
+
+    document.querySelector('.js-text-name').innerHTML = `Your name is: ${name}`
+  }
+
+
+  function buttonChoice(choice) {
+    document.querySelector('.js-text').innerHTML = `You choice: ${choice}`;
+  }
+</script>
+
+</html>

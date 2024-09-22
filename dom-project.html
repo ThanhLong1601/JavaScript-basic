@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom Projects</title>
+  <style>
+    .sub-btn {
+      border: none;
+      background-color: black;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <p>YouTube Subscribe Button</p>
+  <button onclick="subscribeButton()" class="js-subscribe-button sub-btn">Subscribe</button>
+
+  <p>Amazon Shipping Calculator</p>
+  <input onkeydown="handleCostKeyDown(event)" class="js-cost-input" placeholder="Cost of order">
+  <button onclick="calculatorTotal()">Calculator</button>
+
+  <p class="js-total-cost"></p>
+
+
+  <input onkeyup="handleKeyUp()" class="js-text" placeholder="Type something">
+  <p class="js-text-word"></p>
+
+</body>
+<script>
+
+
+  function handleKeyUp() {
+    const textElement = document.querySelector('.js-text');
+    const text = textElement.value
+
+    document.querySelector('.js-text-word').innerHTML = `${text}`
+  }
+
+  function handleCostKeyDown(event) {
+    if (event.key === 'Enter') {
+      calculatorTotal();
+    }
+  }
+
+  function calculatorTotal() {
+    const inputElement = document.querySelector('.js-cost-input')
+    let cost = Number(inputElement.value);
+
+    if (cost < 40) {
+      cost = cost + 10;
+    }
+
+    cost = cost.toFixed(2)
+
+    document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+  }
+
+  function subscribeButton() {
+    const buttonElement = document.querySelector('.js-subscribe-button')
+
+    if (buttonElement.innerText === 'Subscribe') {
+      buttonElement.innerHTML = 'Subscribed';
+    } else {
+      buttonElement.innerHTML = 'Subscribe';
+    }
+  }
+</script>
+
+</html>

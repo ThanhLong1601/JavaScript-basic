@@ -64,8 +64,11 @@
     </button>
 
     <script>
-        let quantityCart = 0;
+        let quantityCart = parseInt(localStorage.getItem('quantity-cart')) || 0;
         let maxQuantity = 10;
+
+        document.getElementById('quantity-cart').value = quantityCart;
+
         function popup_add() {
             let inputQuantity = parseInt(document.getElementById("quantity").value);
 
@@ -78,6 +81,7 @@
                 return;
             }
             quantityCart += inputQuantity;
+            localStorage.setItem('quantity-cart', quantityCart)
             document.getElementById("quantity-cart").value = quantityCart;
             alert("Added " + inputQuantity + " item(s) to the cart");
             document.getElementById("quantity").value = 1;
@@ -85,10 +89,15 @@
         }
 
         function popup_buy() {
-            document.getElementById("quantity-cart").value = 0;
-            document.getElementById("quantity").value = 1;
+            if (quantityCart === 0) {
+                alert("Your cart is empty!")
+                return;
+            }
             alert("Purchased\n" + `${quantityCart} item(s) have been Order`);
             quantityCart = 0;
+            localStorage.setItem('quantity-cart', quantityCart)
+            document.getElementById("quantity-cart").value = quantityCart;
+            document.getElementById("quantity").value = 1;
         }
 
         function popup_remove() {
@@ -112,6 +121,7 @@
             }
 
             quantityCart -= inputQuantity;
+            localStorage.setItem('quantity-cart', quantityCart)
             document.getElementById("quantity-cart").value = quantityCart;
             alert(`${inputQuantity}item(s) has been remove`);
             document.getElementById("quantity").value = 1;
@@ -123,8 +133,10 @@
                 alert("Your cart is empty!!")
                 return;
             }
-            document.getElementById("quantity").value = 1;
+            quantityCart = 0;
+            localStorage.setItem('quantity-cart', quantityCart)
             document.getElementById("quantity-cart").value = 0;
+            document.getElementById("quantity").value = 1;
             alert("Your cart have been clear!!!")
         }
     </script>
