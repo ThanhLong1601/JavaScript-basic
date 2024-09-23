@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <div class="button-row">
+        <button onclick="addSeven()" class="button">7</button>
+        <button onclick="addEight()" class="button">8</button>
+        <button onclick="addNine()" class="button">9</button>
+        <button onclick="addPlus()" class="button btn-cal">+</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="addFour()" class="button">4</button>
+        <button onclick="addFive()" class="button">5</button>
+        <button onclick="addSix()" class="button">6</button>
+        <button onclick="addSubtract()" class="button btn-cal">-</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="addOne()" class="button">1</button>
+        <button onclick="addTwo()" class="button">2</button>
+        <button onclick="addThree()" class="button">3</button>
+        <button onclick="addMultiply()" class="button btn-cal">*</button>
+      </div>
+
+      <div class="button-row">
+        <button onclick="Clear()" class="button">AC</button>
+        <button onclick="addZero()" class="button">0</button>
+        <button onclick="Equal()" class="button">=</button>
+        <button onclick="addDivide()" class="button btn-cal">/</button>
+      </div>
+
+      <div class="input-result">
+        <input type="text" name="calculator" id="calculator" />
+        <input type="text" name="result" id="result" />
+      </div>
+    </div>
+
+    <div class="history-section">
+      <textarea id="history" readonly></textarea>
+      <button class="clear-history-btn" onclick="clearHistory()">🗑️</button>
+    </div>
+  </div>
+</body>
+<script src="./scripts/calculator.js"></script>
+
+</html>

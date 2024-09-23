@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn-tech,
+    .btn-music,
+    .btn-game {
+      font-size: 15px;
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .js-toggled {
+      background-color: rgb(183, 182, 182);
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="changedButton(event)" class="js-btn btn-game">Gaming</button>
+  <button onclick="changedButton(event)" class="js-btn btn-music">Music</button>
+  <button onclick="changedButton(event)" class="js-btn btn-tech">Tech</button>
+
+</body>
+
+<script>
+  function changedButton(event) {
+    const allButton = document.querySelectorAll('.js-btn');
+
+    allButton.forEach(button => {
+      button.classList.remove('js-toggled')
+    });
+
+    event.target.classList.add('js-toggled')
+  }
+</script>
+
+</html>

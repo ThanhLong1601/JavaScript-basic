@@ -1,0 +1,35 @@
+
+.f-p-b {
+    font-size: 15px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: none;
+}
+
+.button-add-cart {
+    background-color: yellow;
+}
+
+.button-buy {
+    background-color: orange;
+}
+
+.button-remove {
+    background-color: red;
+}
+
+.button-clear {
+    background-color: rgb(69, 245, 69);
+}
+
+.button-clear:hover,
+.button-remove:hover,
+.button-buy:hover,
+.button-add-cart:hover {
+    opacity: 0.5;
+}
+
+#quantity-cart,
+#quantity {
+    width: 50px;
+}

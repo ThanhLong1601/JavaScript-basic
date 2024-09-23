@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+    <p>Adults Plain Cotton T-shirt</p>
+    <p>
+        Price: $7.99
+        <input type="number" name="quantity" id="quantity" max="10" min="0" value="1" />
+    </p>
+    <p>
+        Quantity in your Cart
+        <input type="text" name="quantity-cart" id="quantity-cart" value="0" readonly />
+    </p>
+
+    <button onclick="popup_add()" class="button-add-cart f-p-b" title="Buttons">
+        Add to Cart
+    </button>
+
+    <button onclick="popup_buy()" class="button-buy f-p-b" title="Buttons">
+        Buy now
+    </button>
+
+    <button onclick="popup_remove()" class="button-remove f-p-b" title="Buttons">
+        Remove from cart
+    </button>
+
+    <button onclick="popup_clear()" class="button-clear f-p-b" title="Buttons">
+        Clear cart
+    </button>
+
+    <script src="./scripts/cart.js"></script>
+</body>
+
+</html>

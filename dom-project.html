@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dom Projects</title>
   <style>
+    body {
+      font-family: Arial;
+    }
+
     .sub-btn {
       border: none;
       background-color: black;
@@ -14,6 +18,30 @@
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    .is-subscribed {
+      background-color: rgb(240, 240, 240);
+      color: black;
+    }
+
+    .cost-input {
+      font-size: 15px;
+      padding: 10px;
+    }
+
+    .btn-cal {
+      font-size: 15px;
+      padding: 12px 15px;
+      background-color: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
     }
   </style>
 </head>
@@ -23,8 +51,8 @@
   <button onclick="subscribeButton()" class="js-subscribe-button sub-btn">Subscribe</button>
 
   <p>Amazon Shipping Calculator</p>
-  <input onkeydown="handleCostKeyDown(event)" class="js-cost-input" placeholder="Cost of order">
-  <button onclick="calculatorTotal()">Calculator</button>
+  <input onkeydown="handleCostKeyDown(event)" class="js-cost-input cost-input" placeholder="Cost of order">
+  <button onclick="calculatorTotal()" class="btn-cal">Calculator</button>
 
   <p class="js-total-cost"></p>
 
@@ -49,9 +77,31 @@
     }
   }
 
+
+  function subscribeButton() {
+    const buttonElement = document.querySelector('.js-subscribe-button')
+
+    if (buttonElement.innerText === 'Subscribe') {
+      buttonElement.innerHTML = 'Subscribed';
+      buttonElement.classList.add('is-subscribed');
+    } else {
+      buttonElement.innerHTML = 'Subscribe';
+      buttonElement.classList.remove('is-subscribed');
+    }
+  }
+
   function calculatorTotal() {
     const inputElement = document.querySelector('.js-cost-input')
     let cost = Number(inputElement.value);
+    const totalCostElement = document.querySelector('.js-total-cost');
+
+    if (cost < 0) {
+      totalCostElement.innerHTML = "ERROR: cost can't not be less than 0"
+      totalCostElement.classList.add('error');
+      return;
+    } else {
+      totalCostElement.classList.remove('error');
+    }
 
     if (cost < 40) {
       cost = cost + 10;
@@ -60,16 +110,6 @@
     cost = cost.toFixed(2)
 
     document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
-  }
-
-  function subscribeButton() {
-    const buttonElement = document.querySelector('.js-subscribe-button')
-
-    if (buttonElement.innerText === 'Subscribe') {
-      buttonElement.innerHTML = 'Subscribed';
-    } else {
-      buttonElement.innerHTML = 'Subscribe';
-    }
   }
 </script>
 
